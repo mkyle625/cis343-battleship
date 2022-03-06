@@ -16,16 +16,33 @@ Game::Game() {
 	Ship* submarine = new Ship(3, "Submarine", 83);
 	Ship* patrolBoat = new Ship(2, "Patrol Boat", 80);
 
-	// Add ships to the vector
 	ships.insert(ships.begin(), *carrier);
 	ships.insert(ships.begin() + 1, *battleship);
 	ships.insert(ships.begin() + 2, *destroyer);
 	ships.insert(ships.begin() + 3, *submarine);
 	ships.insert(ships.begin() + 4, *patrolBoat);
-	
+
 	// Ship temp = ships.at(3);
 	// std::cout << temp.getName() << std::endl;
 
+	// Create new boards for both the player and the computer
+	player = *(new Board());
+
+	// TESTING STATEMENTS BELOW
+	int count = 0;
+	// Columns
+	for (size_t i = 0; i < WIDTH; i++)
+	{
+		// Rows
+		for (size_t j = 0; j < HEIGHT; j++)
+		{
+			count++;
+			//player[i][j] = 0;
+			std::cout << player[i][j] << std::endl;
+		}
+	}
+	std::cout << count << std::endl;
+	Board* playerBoard = new Board();
 	
 }
 
@@ -44,12 +61,16 @@ void Game::beginGame() {
  * Handle the human placing ships.
  */
 void Game::placeShips() {
+	// Place ship logic here
+	// Probably want to loop through every ship and have player place it, checking if its valid
 }
 
 /**
  * Handle the computer placing ships.
  */
 void Game::placeShipsPC() {
+	// Place ship logic here
+	// Probably want to loop through every ship and have randomly place it, checking if its valid
 }
 
 /**
@@ -57,6 +78,8 @@ void Game::placeShipsPC() {
  * at a particular spot with a particular direction.
  */
 bool Game::place(const int& x, const int& y, Direction d, const Ship& s, Board& b) {
+	// TEMP VALUE TO COMPILE
+	return true;
 }
 
 /**

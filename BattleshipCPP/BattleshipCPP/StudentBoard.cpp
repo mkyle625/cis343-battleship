@@ -14,6 +14,51 @@ Board::Board() {
 	
 	// I am guessing that we need to construct a matrix
 	// something like grid = new int[WIDTH][HEIGHT]
+
+	//int gameGrid[WIDTH][HEIGHT];
+	// Variable grid holds a pointer TO the actual game board multi-array
+	grid = *(new int[WIDTH][HEIGHT]);
+
+	//int temp[WIDTH][HEIGHT]{};
+	//grid = *temp;
+	// *(grid + (iRow * WIDTH) + iCol)
+
+	// Columns
+	for (size_t i = 0; i < WIDTH; i++)
+	{
+		// Rows
+		for (size_t j = 0; j < HEIGHT; j++)
+		{
+			*(grid + (j * WIDTH) + i) = EMPTY;
+		}
+	}
+
+	// TESTING STUFF BELOW
+
+	//int count = 0;
+	//// Columns
+	//for (size_t i = 0; i < WIDTH; i++)
+	//{
+	//	// Rows
+	//	for (size_t j = 0; j < HEIGHT; j++)
+	//	{
+	//		count++;
+	//		std:: cout << *(grid + (j * WIDTH) + i);
+	//	}
+	//}
+
+	//std::cout << count;
+
+	//temp[0][0] = 64;
+	//temp[1][0] = 63;
+	//temp[2][0] = 62;
+	//std::cout << *(grid + (0 * WIDTH) + 0) << std::endl;
+	//std::cout << *(grid + (1 * WIDTH) + 0) << std::endl;
+
+	/*for (size_t i = 0; i < WIDTH; i++)
+	{
+		std::cout << temp[i][0] << std::endl;
+	}*/
 }
 
 Board::Board(const Board& other) {
@@ -23,6 +68,9 @@ Board::Board(const Board& other) {
 
 Board& Board::operator=(const Board& other) {
 	// Equals operator for checking Board = Board??
+	// TEMP VALUES TO COMPILE PLEASE REPLACE
+	Board temp;
+	return temp;
 }
 
 Board::~Board() {
@@ -58,11 +106,18 @@ std::ostream& operator<<(std::ostream& os, Board const& b) {
 	os << s.name << " [" << s.spaces << " spaces]";
 		return os;
 	*/
+
+	// TEMP VALUES TO COMPILE PLEASE REPLACE
+	return os;
 }
 
 int Board::count() const {
+	// TEMP VALUES TO COMPILE
+	return 0;
 }
 
 bool Board::operator< (const Board& other) {
 	// In class he said this was used to see who is currently winning
+	// TEMP VALUES TO COMPILE PLEASE REPLACE
+	return true;
 }
