@@ -27,22 +27,20 @@ Game::Game() {
 
 	// Create new boards for both the player and the computer
 	player = *(new Board());
-
-	// TESTING STATEMENTS BELOW
 	int count = 0;
-	// Columns
-	for (size_t i = 0; i < WIDTH; i++)
-	{
-		// Rows
-		for (size_t j = 0; j < HEIGHT; j++)
-		{
-			count++;
-			//player[i][j] = 0;
-			std::cout << player[i][j] << std::endl;
-		}
-	}
-	std::cout << count << std::endl;
-	Board* playerBoard = new Board();
+	//// Columns
+	//for (size_t i = 0; i < WIDTH; i++)
+	//{
+	//	// Rows
+	//	for (size_t j = 0; j < HEIGHT; j++)
+	//	{
+	//		count++;
+	//		//player[i][j] = 0;
+	//		std::cout << player[i][j] << std::endl;
+	//	}
+	//}
+	std::cout << player << std::endl;
+	//Board* playerBoard = new Board();
 	
 }
 

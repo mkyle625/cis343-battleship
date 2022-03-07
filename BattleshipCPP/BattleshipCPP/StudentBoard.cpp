@@ -98,16 +98,27 @@ Board::Internal Board::operator[](int index) {
 }
 
 std::ostream& operator<<(std::ostream& os, Board const& b) {
-	/* 
-	This is a stream that prints out the board, very
-	similar to what is in the Ship.hpp file
-	The pattern for printing out the board will become
-	something like this:
-	os << s.name << " [" << s.spaces << " spaces]";
-		return os;
-	*/
+	//os << s.name << " [" << s.spaces << " spaces]";
+	//return os;
 
-	// TEMP VALUES TO COMPILE PLEASE REPLACE
+	// Print the header for the board:
+	os << "     0     1     2     3     4     5     6     7     8     9" << std::endl;
+	os << "--------------------------------------------------------------" << std::endl;
+
+
+	// Columns
+	for (size_t i = 0; i < WIDTH; i++)
+	{
+		// Print a new line for the next row
+		os << std::endl;
+		os << i << " |";
+		// Rows
+		for (size_t j = 0; j < HEIGHT; j++)
+		{
+			os << "    " << *(b.grid + (j * WIDTH) + i);
+		}
+	}
+
 	return os;
 }
 
