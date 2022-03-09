@@ -59,8 +59,37 @@ void Game::beginGame() {
  * Handle the human placing ships.
  */
 void Game::placeShips() {
-	// Place ship logic here
-	// Probably want to loop through every ship and have player place it, checking if its valid
+	// Loop through every ship
+	for (Ship ship : ships)
+	{
+		bool shipPlaced = false;
+		int x, y, tempD = 0;
+		Direction d;
+		// Keep trying to place this ship until it is valid
+		while (!shipPlaced) {
+			std::cout << "Where do you wish to place " << ship << "?" << std::endl;
+			std::cin >> x;
+			std::cin >> y;
+			std::cout << "Horizontal or Vertical? (0 or 1)" << std::endl;
+			std::cin >> tempD;
+			if (tempD == 0)
+				d = HORIZONTAL;
+			else if (tempD == 1)
+				d = VERTICAL;
+			else {
+				std::cout << "Must be a 0 or 1. Try again." << std::endl;
+				continue;
+			}
+
+			if (place(x, y, d, ship, player)) {
+				shipPlaced = true;
+				std::cout << "Ship is being placed at " << x << " , " << y << std::endl;
+			}
+			else
+				std::cout << "Ship cannot be placed here. Try again." << std::endl;
+
+		}
+	}
 }
 
 /**
@@ -76,8 +105,53 @@ void Game::placeShipsPC() {
  * at a particular spot with a particular direction.
  */
 bool Game::place(const int& x, const int& y, Direction d, const Ship& s, Board& b) {
-	// TEMP VALUE TO COMPILE
-	return true;
+	// Start with some basic checks before moving on to placement
+
+	// Check that the number is not negative
+	if (x < 0 || y < 0)
+		return false;
+
+	// Check that the number is within bounds
+	if (x > WIDTH || y > HEIGHT)
+		return false;
+
+	// Check that it can fit (Vertically go (y + spaces), Horizontally go (x + spaces))
+	// Apparently you can do this: player[0][0];
+	// Appears to return a integer reference (int&)
+	// Check horizontal
+	if (d == HORIZONTAL) {
+		bool isEmpty = true;
+		for (size_t i = 0; i < s.getSpaces(); i++)
+		{
+			if (player[x + i][y] != EMPTY)
+				isEmpty = false;
+		}
+		if (isEmpty) {
+			for (size_t i = 0; i < s.getSpaces(); i++)
+			{
+				player[x + i][y] = s.getChr();
+			}
+			return true;
+		}
+
+	}
+	if (d == VERTICAL) {
+		bool isEmpty = true;
+		for (size_t i = 0; i < s.getSpaces(); i++)
+		{
+			if (player[x][y + i] != EMPTY)
+				isEmpty = false;
+		}
+		if (isEmpty) {
+			for (size_t i = 0; i < s.getSpaces(); i++)
+			{
+				player[x][y + i] = s.getChr();
+			}
+			return true;
+		}
+	}
+
+	return false;
 }
 
 /**
