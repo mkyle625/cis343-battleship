@@ -5,6 +5,8 @@
 #include <iostream>
 #include <string>
 
+#include <iomanip>
+
 Board::Board() {
 	// Adding some comments here for figuring 
 	// out how the code works.
@@ -98,24 +100,28 @@ Board::Internal Board::operator[](int index) {
 }
 
 std::ostream& operator<<(std::ostream& os, Board const& b) {
-	//os << s.name << " [" << s.spaces << " spaces]";
-	//return os;
 
-	// Print the header for the board:
-	os << "     0     1     2     3     4     5     6     7     8     9" << std::endl;
+	// Print the header for the columns
+	// The setw(5) ensures the grid prints out in a nice rectangle
+	os << "  ";
+	for (int i = 0; i < WIDTH; i++)
+	{
+		os << std::setw(5) << i;
+	}
+	os << std::endl;
 	os << "--------------------------------------------------------------" << std::endl;
-
 
 	// Columns
 	for (size_t i = 0; i < WIDTH; i++)
 	{
 		// Print a new line for the next row
 		os << std::endl;
-		os << i << " |";
+		os << i << "|";
 		// Rows
 		for (size_t j = 0; j < HEIGHT; j++)
 		{
-			os << "    " << *(b.grid + (j * WIDTH) + i);
+			//os << "    " << (char)*(b.grid + (j * WIDTH) + i);
+			os << std::setw(5) << (char)*(b.grid + (j * WIDTH) + i);
 		}
 	}
 

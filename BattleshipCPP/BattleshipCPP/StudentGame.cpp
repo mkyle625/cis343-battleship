@@ -27,19 +27,8 @@ Game::Game() {
 
 	// Create new boards for both the player and the computer
 	player = *(new Board());
-	int count = 0;
-	//// Columns
-	//for (size_t i = 0; i < WIDTH; i++)
-	//{
-	//	// Rows
-	//	for (size_t j = 0; j < HEIGHT; j++)
-	//	{
-	//		count++;
-	//		//player[i][j] = 0;
-	//		std::cout << player[i][j] << std::endl;
-	//	}
-	//}
-	std::cout << player << std::endl;
+	computer = *(new Board());
+
 	//Board* playerBoard = new Board();
 	
 }
@@ -48,8 +37,21 @@ Game::Game() {
  * Begin Game let's user and then computer setup boards then calls run()
  */
 void Game::beginGame() {
+	// Print both boards (for visualization)
+	std::cout << "COMPUTER BOARD: " << std::endl;
+	std::cout << computer << std::endl;
+	std::cout << "PLAYER BOARD: " << std::endl;
+	std::cout << player << std::endl;
+
+	// Introduction
+	std::cout << "Welcome to Battleship!" << std::endl;
+	std::cout << "You will be facing off against the legendary CAPTAIN <name>" << std::endl;
+
+	std::cout << "To get started, place your ships by following the prompts." << std::endl;
+
 	// Have the user setup their board
 	placeShips();
+
 	// Have the computer setup their board
 	placeShipsPC();
 
@@ -84,6 +86,8 @@ void Game::placeShips() {
 			if (place(x, y, d, ship, player)) {
 				shipPlaced = true;
 				std::cout << "Ship is being placed at " << x << " , " << y << std::endl;
+				std::cout << "PLAYER BOARD: " << std::endl;
+				std::cout << player << std::endl;
 			}
 			else
 				std::cout << "Ship cannot be placed here. Try again." << std::endl;
@@ -98,6 +102,9 @@ void Game::placeShips() {
 void Game::placeShipsPC() {
 	// Place ship logic here
 	// Probably want to loop through every ship and have randomly place it, checking if its valid
+
+	// Gonna use the same logic as above, except choose random numbers and see if they work
+
 }
 
 /**
@@ -116,13 +123,16 @@ bool Game::place(const int& x, const int& y, Direction d, const Ship& s, Board& 
 		return false;
 
 	// Check that it can fit (Vertically go (y + spaces), Horizontally go (x + spaces))
-	// Apparently you can do this: player[0][0];
-	// Appears to return a integer reference (int&)
+
 	// Check horizontal
 	if (d == HORIZONTAL) {
 		bool isEmpty = true;
 		for (size_t i = 0; i < s.getSpaces(); i++)
 		{
+			// First check that the entire ship will fit
+			if (x + i > WIDTH)
+				return false;
+
 			if (player[x + i][y] != EMPTY)
 				isEmpty = false;
 		}
@@ -139,6 +149,10 @@ bool Game::place(const int& x, const int& y, Direction d, const Ship& s, Board& 
 		bool isEmpty = true;
 		for (size_t i = 0; i < s.getSpaces(); i++)
 		{
+			// Check that the entire ship fits
+			if (y + i > WIDTH)
+				return false;
+
 			if (player[x][y + i] != EMPTY)
 				isEmpty = false;
 		}
