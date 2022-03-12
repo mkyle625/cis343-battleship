@@ -1,9 +1,8 @@
-﻿  StudentBoard.cpp
-  StudentGame.cpp
-C:\Users\kylem\GitHub\cis343-battleship\BattleshipCPP\BattleshipCPP\StudentGame.cpp(136,7): warning C4267: 'argument': conversion from 'size_t' to 'int', possible loss of data
-C:\Users\kylem\GitHub\cis343-battleship\BattleshipCPP\BattleshipCPP\StudentGame.cpp(142,17): warning C4267: 'argument': conversion from 'size_t' to 'int', possible loss of data
-C:\Users\kylem\GitHub\cis343-battleship\BattleshipCPP\BattleshipCPP\StudentGame.cpp(156,7): warning C4267: 'argument': conversion from 'size_t' to 'int', possible loss of data
-C:\Users\kylem\GitHub\cis343-battleship\BattleshipCPP\BattleshipCPP\StudentGame.cpp(162,20): warning C4267: 'argument': conversion from 'size_t' to 'int', possible loss of data
-  Generating Code...
-C:\Users\kylem\GitHub\cis343-battleship\BattleshipCPP\BattleshipCPP\StudentBoard.cpp(75): warning C4172: returning address of local variable or temporary: temp
+﻿  StudentGame.cpp
+C:\Users\kylem\GitHub\cis343-battleship\BattleshipCPP\BattleshipCPP\StudentGame.cpp(180,8): warning C4267: 'argument': conversion from 'size_t' to 'int', possible loss of data
+C:\Users\kylem\GitHub\cis343-battleship\BattleshipCPP\BattleshipCPP\StudentGame.cpp(190,12): warning C4267: 'argument': conversion from 'size_t' to 'int', possible loss of data
+C:\Users\kylem\GitHub\cis343-battleship\BattleshipCPP\BattleshipCPP\StudentGame.cpp(201,8): warning C4267: 'argument': conversion from 'size_t' to 'int', possible loss of data
+C:\Users\kylem\GitHub\cis343-battleship\BattleshipCPP\BattleshipCPP\StudentGame.cpp(211,15): warning C4267: 'argument': conversion from 'size_t' to 'int', possible loss of data
+C:\Users\kylem\GitHub\cis343-battleship\BattleshipCPP\BattleshipCPP\StudentGame.cpp(183,33): warning C4101: 'e': unreferenced local variable
+C:\Users\kylem\GitHub\cis343-battleship\BattleshipCPP\BattleshipCPP\StudentGame.cpp(204,33): warning C4101: 'e': unreferenced local variable
   BattleshipCPP.vcxproj -> C:\Users\kylem\GitHub\cis343-battleship\BattleshipCPP\x64\Debug\BattleshipCPP.exe

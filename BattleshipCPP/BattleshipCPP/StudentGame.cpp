@@ -104,7 +104,42 @@ void Game::placeShipsPC() {
 	// Probably want to loop through every ship and have randomly place it, checking if its valid
 
 	// Gonna use the same logic as above, except choose random numbers and see if they work
+	// Loop through every ship
+	for (Ship ship : ships)
+	{
+		bool shipPlaced = false;
+		int x, y, tempD = 0;
+		int min = 0;
+		int max = 9;
+		int randInt = 0;
+		Direction d;
 
+		// Keep trying to place this ship until it is valid
+		while (!shipPlaced) {
+			// Seed the random generator
+			std::random_device rd;
+			std::mt19937 rng(rd());
+			std::uniform_int_distribution<int> uni(min, max);
+
+			x = uni(rng);
+			y = uni(rng);
+			tempD = uni(rng);
+
+			if (tempD > 5)
+				d = VERTICAL;
+			else
+				d = HORIZONTAL;
+
+			if (place(x, y, d, ship, computer)) {
+				shipPlaced = true;
+				//std::cout << "Ship is being placed at " << x << " , " << y << std::endl;
+				//std::cout << "COMPUTER BOARD: " << std::endl;
+				//std::cout << computer << std::endl;
+			}
+				//std::cout << "Ship cannot be placed here. Try again." << std::endl;
+
+		}
+	}
 }
 
 /**
@@ -129,17 +164,18 @@ bool Game::place(const int& x, const int& y, Direction d, const Ship& s, Board& 
 		bool isEmpty = true;
 		for (size_t i = 0; i < s.getSpaces(); i++)
 		{
-			// First check that the entire ship will fit
-			if (x + i > WIDTH)
+			try {
+				if (b[x + i][y] != EMPTY)
+					isEmpty = false;
+			}
+			catch (const std::exception& e) {
 				return false;
-
-			if (player[x + i][y] != EMPTY)
-				isEmpty = false;
+			}
 		}
 		if (isEmpty) {
 			for (size_t i = 0; i < s.getSpaces(); i++)
 			{
-				player[x + i][y] = s.getChr();
+				b[x + i][y] = s.getChr();
 			}
 			return true;
 		}
@@ -149,17 +185,18 @@ bool Game::place(const int& x, const int& y, Direction d, const Ship& s, Board& 
 		bool isEmpty = true;
 		for (size_t i = 0; i < s.getSpaces(); i++)
 		{
-			// Check that the entire ship fits
-			if (y + i > WIDTH)
+			try {
+				if (b[x][y + i] != EMPTY)
+					isEmpty = false;
+			}
+			catch (const std::exception& e) {
 				return false;
-
-			if (player[x][y + i] != EMPTY)
-				isEmpty = false;
+			}
 		}
 		if (isEmpty) {
 			for (size_t i = 0; i < s.getSpaces(); i++)
 			{
-				player[x][y + i] = s.getChr();
+				b[x][y + i] = s.getChr();
 			}
 			return true;
 		}
@@ -172,12 +209,20 @@ bool Game::place(const int& x, const int& y, Direction d, const Ship& s, Board& 
  * Call human turn/computer turn until someone wins.
  */
 void Game::run() {
+
+	// Keep the game running on a condition
+
 }
 
 void Game::humanTurn() {
+
+	// Process turn
+
 }
 
 void Game::computerTurn() {
+
+	// Same as human turn, but add random elements 
 }
 
 /**

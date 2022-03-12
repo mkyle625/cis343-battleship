@@ -109,7 +109,7 @@ std::ostream& operator<<(std::ostream& os, Board const& b) {
 		os << std::setw(5) << i;
 	}
 	os << std::endl;
-	os << "--------------------------------------------------------------" << std::endl;
+	os << "---------------------------------------------------------";
 
 	// Columns
 	for (size_t i = 0; i < WIDTH; i++)
@@ -121,7 +121,10 @@ std::ostream& operator<<(std::ostream& os, Board const& b) {
 		for (size_t j = 0; j < HEIGHT; j++)
 		{
 			//os << "    " << (char)*(b.grid + (j * WIDTH) + i);
-			os << std::setw(5) << (char)*(b.grid + (j * WIDTH) + i);
+			if ((*(b.grid + (j * WIDTH) + i)) == 0)
+				os << std::setw(5) << *(b.grid + (j * WIDTH) + i);
+			else
+				os << std::setw(5) << (char)*(b.grid + (j * WIDTH) + i);
 		}
 	}
 
@@ -129,12 +132,31 @@ std::ostream& operator<<(std::ostream& os, Board const& b) {
 }
 
 int Board::count() const {
-	// TEMP VALUES TO COMPILE
-	return 0;
+	// Count all of the hits on the board.
+	
+	// A player needs 5 + 4 + 3 + 3 + 2 = 17 hits to win
+	
+	int count = 0;
+
+	// Columns
+	for (size_t i = 0; i < WIDTH; i++)
+	{
+		// Rows
+		for (size_t j = 0; j < HEIGHT; j++)
+		{
+			if ((*(grid + (j * WIDTH) + i)) == HIT)
+				count++;
+		}
+	}
+
+	return count;
 }
 
 bool Board::operator< (const Board& other) {
 	// In class he said this was used to see who is currently winning
-	// TEMP VALUES TO COMPILE PLEASE REPLACE
-	return true;
+	
+	if (other.count() < count())
+		return true;
+	else
+		return false;
 }
