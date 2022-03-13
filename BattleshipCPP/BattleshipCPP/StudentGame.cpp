@@ -214,14 +214,16 @@ void Game::run() {
 		humanTurn();
 		computerTurn();
 		std::cout << "PLAYER BOARD: " << std::endl;
+		std::cout << player << std::endl;
 		std::cout << "COMPUTER BOARD: " << std::endl;
-		if(player.operator<(computer)){
+		std::cout << computer << std::endl;
+		if(computer.operator<(player)){
 			std::cout << "PLAYER IS WINNING" << std::endl;
 		} else {
 			std::cout << "COMPUTER IS WINNING" << std::endl;
 		}
 	}
-	if(player.operator<(computer)){
+	if(computer.operator<(player)){
 		std::cout << "PLAYER WON" << std::endl;
 	} else {
 		std::cout << "COMPUTER WON" << std::endl;
