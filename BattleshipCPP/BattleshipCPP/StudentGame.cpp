@@ -210,19 +210,74 @@ bool Game::place(const int& x, const int& y, Direction d, const Ship& s, Board& 
  */
 void Game::run() {
 
-	// Keep the game running on a condition
-
+	while((player.count() != 17) && (computer.count() != 17)){
+		humanTurn();
+		computerTurn();
+		std::cout << "PLAYER BOARD: " << std::endl;
+		std::cout << "COMPUTER BOARD: " << std::endl;
+		if(player.operator<(computer)){
+			std::cout << "PLAYER IS WINNING" << std::endl;
+		} else {
+			std::cout << "COMPUTER IS WINNING" << std::endl;
+		}
+	}
+	if(player.operator<(computer)){
+		std::cout << "PLAYER WON" << std::endl;
+	} else {
+		std::cout << "COMPUTER WON" << std::endl;
+	}
 }
 
 void Game::humanTurn() {
 
 	// Process turn
-
+	int x = 0;
+	int y = 0;
+	//std::cout << "Where do you wish to place " << ship << "?" << std::endl;
+	std::cout << "Where do you wish to fire? (X cord then Y cord)" << std::endl;
+	std::cin >> x;
+	std::cin >> y;
+	if (x < 0 || y < 0 || x > WIDTH || y > HEIGHT){
+		std::cout << "Invalid coordinates, please try again." << std::endl;
+		humanTurn();
+	} else {
+		if(computer[x][y] == EMPTY){
+			computer[x][y] = MISS;
+			std::cout << "Player MISS!" << std::endl;
+		} else if (computer[x][y] == MISS){
+			std::cout << "Player MISSES Again!" << std::endl;
+		} else {
+			computer[x][y] = HIT;
+			std::cout << "Player HIT!" << std::endl;
+		}
+	}
 }
 
 void Game::computerTurn() {
 
 	// Same as human turn, but add random elements 
+	int x = -10;
+	int y = -10;
+	for (size_t i = 0; i < WIDTH; i++)
+	{
+		// Rows
+		for (size_t j = 0; j < HEIGHT; j++)
+		{
+			if ((player[i][j] != MISS) && (player[i][j] != HIT)){
+				x = i;
+				y = j;
+			}
+			if ((x != -10) && (y != -10)){break;}
+		}
+		if ((x != -10) && (y != -10)){break;}
+	}
+	if(player[x][y] == EMPTY){
+		player[x][y] = MISS;
+		std::cout << "Computer MISS!" << std::endl;
+	} else {
+		player[x][y] = HIT;
+		std::cout << "Computer HIT!" << std::endl;
+	}
 }
 
 /**
@@ -233,6 +288,7 @@ int main(int argc, char** argv) {
 	(void)argv;
 	Game g;
 	g.beginGame();
+	g.run();
 
 	return 0;
 }
