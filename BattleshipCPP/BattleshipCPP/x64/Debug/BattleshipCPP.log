@@ -1,8 +1,13 @@
-﻿  StudentGame.cpp
-C:\Users\kylem\GitHub\cis343-battleship\BattleshipCPP\BattleshipCPP\StudentGame.cpp(180,8): warning C4267: 'argument': conversion from 'size_t' to 'int', possible loss of data
-C:\Users\kylem\GitHub\cis343-battleship\BattleshipCPP\BattleshipCPP\StudentGame.cpp(190,12): warning C4267: 'argument': conversion from 'size_t' to 'int', possible loss of data
-C:\Users\kylem\GitHub\cis343-battleship\BattleshipCPP\BattleshipCPP\StudentGame.cpp(201,8): warning C4267: 'argument': conversion from 'size_t' to 'int', possible loss of data
-C:\Users\kylem\GitHub\cis343-battleship\BattleshipCPP\BattleshipCPP\StudentGame.cpp(211,15): warning C4267: 'argument': conversion from 'size_t' to 'int', possible loss of data
-C:\Users\kylem\GitHub\cis343-battleship\BattleshipCPP\BattleshipCPP\StudentGame.cpp(183,33): warning C4101: 'e': unreferenced local variable
-C:\Users\kylem\GitHub\cis343-battleship\BattleshipCPP\BattleshipCPP\StudentGame.cpp(204,33): warning C4101: 'e': unreferenced local variable
+﻿  StudentBoard.cpp
+  StudentGame.cpp
+C:\Users\kylem\GitHub\cis343-battleship\BattleshipCPP\BattleshipCPP\StudentGame.cpp(161,8): warning C4267: 'argument': conversion from 'size_t' to 'int', possible loss of data
+C:\Users\kylem\GitHub\cis343-battleship\BattleshipCPP\BattleshipCPP\StudentGame.cpp(171,12): warning C4267: 'argument': conversion from 'size_t' to 'int', possible loss of data
+C:\Users\kylem\GitHub\cis343-battleship\BattleshipCPP\BattleshipCPP\StudentGame.cpp(183,8): warning C4267: 'argument': conversion from 'size_t' to 'int', possible loss of data
+C:\Users\kylem\GitHub\cis343-battleship\BattleshipCPP\BattleshipCPP\StudentGame.cpp(193,15): warning C4267: 'argument': conversion from 'size_t' to 'int', possible loss of data
+C:\Users\kylem\GitHub\cis343-battleship\BattleshipCPP\BattleshipCPP\StudentGame.cpp(164,33): warning C4101: 'e': unreferenced local variable
+C:\Users\kylem\GitHub\cis343-battleship\BattleshipCPP\BattleshipCPP\StudentGame.cpp(186,33): warning C4101: 'e': unreferenced local variable
+C:\Users\kylem\GitHub\cis343-battleship\BattleshipCPP\BattleshipCPP\StudentGame.cpp(278,7): warning C4267: 'argument': conversion from 'size_t' to 'int', possible loss of data
+C:\Users\kylem\GitHub\cis343-battleship\BattleshipCPP\BattleshipCPP\StudentGame.cpp(280,10): warning C4267: '=': conversion from 'size_t' to 'int', possible loss of data
+C:\Users\kylem\GitHub\cis343-battleship\BattleshipCPP\BattleshipCPP\StudentGame.cpp(281,10): warning C4267: '=': conversion from 'size_t' to 'int', possible loss of data
+  Generating Code...
   BattleshipCPP.vcxproj -> C:\Users\kylem\GitHub\cis343-battleship\BattleshipCPP\x64\Debug\BattleshipCPP.exe

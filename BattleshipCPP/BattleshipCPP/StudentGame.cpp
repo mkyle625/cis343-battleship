@@ -24,7 +24,9 @@ Game::Game() {
 
 	// Create new boards for both the player and the computer
 	player = *(new Board());
+	player.setVisible(true);
 	computer = *(new Board());
+	computer.setVisible(false);
 }
 
 /**
@@ -107,14 +109,18 @@ void Game::placeShipsPC() {
 
 		// Keep trying to place this ship until it is valid
 		while (!shipPlaced) {
-			// Seed the random generator
-			std::random_device rd;
-			std::mt19937 rng(rd());
-			std::uniform_int_distribution<int> uni(min, max);
 
-			x = uni(rng);
-			y = uni(rng);
-			tempD = uni(rng);
+			// This is the setup for a random generator that pulls
+			// from a uniform distribution. 
+			std::random_device random;
+
+			// mt19937 is a random generator engine built-in
+			std::mt19937 randomGen(random());
+			std::uniform_int_distribution<int> uniformDist(min, max);
+
+			x = uniformDist(randomGen);
+			y = uniformDist(randomGen);
+			tempD = uniformDist(randomGen);
 
 			if (tempD > 5)
 				d = VERTICAL;

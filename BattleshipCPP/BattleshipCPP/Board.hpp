@@ -11,11 +11,8 @@ class Board {
 
 public:
 	Board();
-	Board(const Board& other);
-	Board& operator=(const Board& other);
 	int count() const;
 	bool operator< (const Board& other); // Count number of spots on board, if "this" board is less than "other" board
-	~Board();
 	void setVisible(bool v);
 
 	class Internal {
