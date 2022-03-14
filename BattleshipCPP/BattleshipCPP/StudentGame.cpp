@@ -6,6 +6,10 @@
 #include <random>
 
 /**
+* Authors: Kyle Mishanec, Connor Boerma
+*/
+
+/**
  * Constructor will create the ships vector and add ships to it.
  */
 Game::Game() {

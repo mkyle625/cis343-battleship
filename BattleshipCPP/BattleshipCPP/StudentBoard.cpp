@@ -8,6 +8,11 @@
 #include <iomanip>
 
 /**
+* Authors: Kyle Mishanec, Connor Boerma
+*/
+
+
+/**
  * Constructor upon game init. to create an empty board
  */
 Board::Board() {
